@@ -66,14 +66,6 @@ Copyright 2014-2020 Piotr Fusik	and other recoil authors.
 
 GNU GPL version 2 or later.
 
-SDLMain.{m,h}
-=========
-
-Copyright ???? Darrell Walisser
-Copyright ???? Max Horn
-
-License unknown
-
 SFont.{c,h}
 ===========
 
