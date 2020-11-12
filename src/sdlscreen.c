@@ -157,6 +157,11 @@ void GFX2_Set_mode(int *width, int *height, int fullscreen)
                                   *width, *height, (fullscreen?SDL_WINDOW_FULLSCREEN:SDL_WINDOW_RESIZABLE));
     SDL_SetWindowIcon(Window_SDL, icon);
     Renderer_SDL = SDL_CreateRenderer(Window_SDL, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+	if (!Renderer_SDL) {
+		Renderer_SDL = SDL_CreateRenderer(Window_SDL, -1, SDL_RENDERER_SOFTWARE);	  
+	}
+
   }
   else
   {

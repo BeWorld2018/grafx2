@@ -50,7 +50,7 @@
     #include <mint/sysbind.h>
     #include <mint/osbind.h>
     #include <mint/ostruct.h>
-#elif defined(__AROS__)
+#elif defined(__AROS__) || defined(__MORPHOS__)
     #include <sys/mount.h>
     #include <proto/iffparse.h>
     #include <datatypes/textclass.h>
@@ -373,7 +373,7 @@ char * GFX2_GetTextClipboard(word * * unicode)
         CloseClipboard();
       }
     return dst;
-  #elif defined(__AROS__)
+  #elif defined(__AROS__) || defined(__MORPHOS__)
 
     struct IFFHandle *iff = NULL;
     struct ContextNode *cn;

@@ -605,7 +605,7 @@ void Load_TIFF_from_memory(T_IO_Context * context, const void * buffer, unsigned
 void Load_TIFF(T_IO_Context * context)
 {
   TIFF * tif;
-#if !defined(WIN32)
+#if !defined(WIN32) && !defined(__MORPHOS__)
   FILE * file;
 
   File_error = 1;

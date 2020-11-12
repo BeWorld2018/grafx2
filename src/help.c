@@ -905,7 +905,7 @@ void Button_Stats(int btn)
   // Display free space
   if (mem_size != 0)
   {
-#if defined(__AROS__)
+#if defined(__AROS__) || defined(__MORPHOS__)
     char *colon = strchr(Main.selector.Directory, ':');
     int len = strlen(Main.selector.Directory);
     if (colon)
@@ -927,7 +927,7 @@ void Button_Stats(int btn)
         sprintf(buffer,"%u Kilobytes",(unsigned int)(mem_size/1024));
     else 
         sprintf(buffer,"%u bytes",(unsigned int)mem_size);
-#if defined(__AROS__)
+#if defined(__AROS__) || defined(__MORPHOS__)
     Print_in_window(192,y,buffer,STATS_DATA_COLOR,MC_Black);
 #else
     Print_in_window(146,y,buffer,STATS_DATA_COLOR,MC_Black);

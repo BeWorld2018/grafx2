@@ -361,8 +361,8 @@ endif
     RMDIR = rmdir --ignore-fail-on-non-empty
     CP = cp
     BIN = ../bin/grafx2
-    COPT = -Wall -gstabs $(shell sdl-config --cflags) $(TTFCOPT)
-    LOPT = -lSDL_image $(shell sdl-config --libs) -lpng -ljpeg -lz $(TTFLOPT)
+    COPT = -Wall -02 $(shell sdl-config --cflags) $(TTFCOPT) -D__MORPHOS_SHAREDLIBS
+    LOPT = -lSDL_image $(shell sdl-config --libs) -lpng_shared -lz_shared -ljpeg $(TTFLOPT)
     OBJDIR = ../obj/morphos
     ZIP = lha
     ZIPOPT = a

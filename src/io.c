@@ -274,7 +274,7 @@ char * Find_last_separator(const char * str)
     if (*str == PATH_SEPARATOR[0]
 #if defined(__WIN32__) || defined(WIN32)
      || *str == '/'
-#elif __AROS__
+#elif defined(__AROS__) || defined(__MORPHOS__)
      || *str == ':'
 #endif
      )
@@ -289,7 +289,7 @@ word * Find_last_separator_unicode(const word * str)
     if (*str == (byte)PATH_SEPARATOR[0]
 #if defined(__WIN32__) || defined(WIN32)
      || *str == '/'
-#elif __AROS__
+#elif defined(__AROS__) || defined(__MORPHOS__)
      || *str == ':'
 #endif
      )
@@ -306,7 +306,7 @@ char * Filepath_append_to_dir(const char * dir, const char * filename)
   if (dir[len-1] == PATH_SEPARATOR[0]
 #if defined(__WIN32__) || defined(WIN32)
      || dir[len-1] == '/'
-#elif __AROS__
+#elif defined(__AROS__) || defined(__MORPHOS__)
      || dir[len-1] == ':'
 #endif
     )
@@ -420,7 +420,7 @@ void Append_path(char *path, const char *filename, char *reverse_path)
     {
       if (reverse_path)
         strcpy(reverse_path, separator_pos+1);
-      #if defined(__AROS__)
+      #if defined(__AROS__) || defined(__MORPHOS__)
       // Don't strip away the colon
       if (*separator_pos == ':') *(separator_pos+1)='\0';
       else *separator_pos='\0';
@@ -451,7 +451,7 @@ void Append_path(char *path, const char *filename, char *reverse_path)
     if (len && (strcmp(path+len-1,PATH_SEPARATOR) 
     #ifdef __WIN32__
       && path[len-1]!='/'
-    #elif __AROS__
+    #elif defined(__AROS__) || defined(__MORPHOS__)
       && path[len-1]!=':' // To avoid paths like volume:/dir
     #endif
       ))
@@ -890,7 +890,7 @@ int Lock_file_handle = -1;
 
 byte Create_lock_file(const char *file_directory)
 {
-  #if defined (__amigaos__)||(__AROS__)||(__ANDROID__)
+  #if defined (__amigaos__)||(__AROS__)||(__ANDROID__) || defined(__MORPHOS__)
     #warning "Missing code for your platform, please check and correct!"
   #elif defined(__SWITCH__)
     // The switch can only run one application at a time, so we don't do anything special here

@@ -52,7 +52,7 @@
 	// If resolved_path is null, it is allocated.
     char *Realpath(const char *_path, char *resolved_path)
     {
-        #if defined(__AROS__)
+        #if defined(__AROS__) || defined(__MORPHOS__)
         int fd = open("", O_RDONLY); // GrafX2 is compiled without Unix support
         #else
         int fd = open(".", O_RDONLY);

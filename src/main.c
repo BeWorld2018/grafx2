@@ -101,6 +101,8 @@
 #include <machine/endian.h>
 #elif defined(__FreeBSD__)
 #include <sys/endian.h>
+#elif defined(__MORPHOS__)
+#include <machine/endian.h>
 #elif !defined(WIN32)
 #include <endian.h>
 #endif
@@ -146,6 +148,12 @@
   extern DECLSPEC int SDLCALL SDL_putenv(const char *variable);
 #endif
 
+#if defined(__MORPHOS__)
+
+unsigned long __stack = 1000000;
+__attribute__ ((section(".text"))) UBYTE VString[] = "$VER: Grafx2\r\n";
+
+#endif
 extern char Program_version[]; // generated in pversion.c
 
 static int setsize_width;
